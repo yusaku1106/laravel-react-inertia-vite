@@ -5,8 +5,8 @@ use App\Http\Controllers\User\Auth\ForgotPasswordController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\Auth\PasswordResetController;
+use App\Http\Controllers\User\UserSettingsController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
@@ -69,6 +69,7 @@ Route::middleware('auth')->group(function () {
     })->middleware('throttle:6,1')->name('verification.send');
 
     Route::middleware('verified')->group(function() {
-        Route::get('/home', [HomeController::class, 'index'])->name('home');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('home');
+        Route::get('/user-settings', [UserSettingsController::class, 'index'])->name('user.settings');
     });
 });
