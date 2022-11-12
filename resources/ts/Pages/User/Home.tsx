@@ -17,7 +17,6 @@ type Props = {
 };
 
 export default function Home(props: Props) {
-    console.log(props.posts);
     return (
         <Authenticated>
             <div className="flex justify-around">
